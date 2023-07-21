@@ -25,6 +25,8 @@ cd /root/doubleIt/build
 
 the expected output is something like
 ```
+hello from cpp
+[JULIA][LOG] initialization successful (1 thread(s)).
 hello from julia
 [0] in: 0.68496 | C++: 1.36992 |  Julia: 1.36992
 [1] in: 0.873393 | C++: 1.74679 |  Julia: 1.74679
