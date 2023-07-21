@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(hello)
+project(array)
 
 # set file locations 
 set(JULIA_PATH "/usr/local/julia")
@@ -16,19 +16,19 @@ link_directories(
 )
 find_package(jluna REQUIRED)
 
-add_executable(hello hello.cpp)
+add_executable(main main.cpp)
 
 # needs to be positition independent code
-target_compile_options(hello PRIVATE "-fpic")
+target_compile_options(main PRIVATE "-fpic")
 
-target_link_libraries(hello PUBLIC
+target_link_libraries(main PUBLIC
 	jluna
 	julia
 )
 
-target_include_directories(hello PRIVATE
+target_include_directories(main PRIVATE
 	${JLUNA_INCLUDE_DIRS}
 	${JULIA_INCLUDE_DIRS}
 )
 
-target_compile_features(hello PRIVATE cxx_std_20)
+target_compile_features(main PRIVATE cxx_std_20)

@@ -8,3 +8,5 @@ services:
     network_mode: "host"
     volumes:
       - ./hello:/root/hello
+      - ./array:/root/array
+      - ./doubleIt:/root/doubleIt

@@ -2,9 +2,7 @@ FROM julia
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y --no-install-recommends git cmake build-essential g++
-RUN apt-get install -y --no-install-recommends ca-certificates
-RUN apt-get install -y --no-install-recommends vim
+RUN apt-get update && apt-get install -y --no-install-recommends git cmake build-essential g++ ca-certificates vim
 
 
 
