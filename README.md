@@ -42,3 +42,7 @@ Time Julia: 2.3184 us/loop
 ```
 
 Note, if the build type is set to `Debug` (default) , C++ code takes 11.9 us/loop, but with  `Release` mode, it takes 1.3 us/loop. 
+
+
+Here is a plot of the timing comparisons between `julia` and `c++`:
+![](overhead.png)

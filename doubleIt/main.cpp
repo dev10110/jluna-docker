@@ -3,6 +3,7 @@
 #include <jluna.hpp>
 
 #include <chrono>
+#include <cstdlib>
 
 using namespace jluna;
 using namespace std::chrono;
@@ -89,7 +90,8 @@ int main(int argc, char* argv[])
 
 
 	// now define the test problem
-	constexpr size_t N = 10000;
+	constexpr std::size_t N = 10000 ;
+
 
 	// construct input array 
 	double in[N];
