@@ -48,3 +48,53 @@ Note, if the build type is set to `Debug` (default) , C++ code takes 11.9 us/loo
 
 Here is a plot of the timing comparisons between `julia` and `c++`:
 ![](overhead.png)
+
+
+## Creating a Julia Wrapped Library
+
+
+First we build the library
+```
+cd /root/libDoubleIt
+mkdir build
+cd build
+cmake ..
+make
+make install
+ldconfig # not sure if this is always necessary
+```
+
+Next, we try to use it
+```
+cd /root/useDoubleIt
+mkdir build
+cd build
+cmake ..
+make
+```
+
+and if we try to run it
+```
+./main
+``` 
+we get the following error:
+```
+./main: error while loading shared libraries: libjulia.so.1: cannot open shared object file: No such file or directory
+```
+
+So we need to set the `LD_LIBRARY_PATH`
+```
+LD_LIBRARY_PATH=/usr/local/julia/lib:$LD_LIBRARY_PATH ./main
+```
+which has an output
+```
+hello from cpp
+[JULIA][LOG] initialization successful (1 thread(s)).
+INITIALIZING myModule
+in: 1 2 3 4 5 
+out (before doubling): 0 0 0 0 0 
+out (after doubling): 2 4 6 8 10
+``` 
+demonstrating that a we can wrap a julia library using jluna, export it as a shared c++ library, and import it into another c++ project without any jluna dependencies. This is particulary useful since some projects may not be able to use C++20 features.
+
+I am still trying to figure out how we can avoid the dependency on setting the `LD_LIBRARY_PATH`
