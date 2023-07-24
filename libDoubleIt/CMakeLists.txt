@@ -26,10 +26,12 @@ find_package(jluna REQUIRED)
 
 
 # now define the library
-add_library(doubleIt 
+add_library(doubleIt  SHARED
 	src/double_it.cpp
 )
-set_target_properties(doubleIt PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(doubleIt PROPERTIES 
+	SOVERSION ${PROJECT_VERSION_MAJOR}
+	VERSION ${PROJECT_VERSION})
 set_target_properties(doubleIt PROPERTIES PUBLIC_HEADER include/double_it.hpp)
 
 # needs to be position independent
@@ -56,7 +58,7 @@ include(GNUInstallDirs)
 install(
 	TARGETS doubleIt
 	EXPORT doubleItTargets
-	FILE_SET HEADERS
+	# FILE_SET HEADERS
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} 
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
