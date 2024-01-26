@@ -98,3 +98,9 @@ out (after doubling): 2 4 6 8 10
 demonstrating that a we can wrap a julia library using jluna, export it as a shared c++ library, and import it into another c++ project without any jluna dependencies. This is particulary useful since some projects may not be able to use C++20 features.
 
 I am still trying to figure out how we can avoid the dependency on setting the `LD_LIBRARY_PATH`
+
+FOUND A FIX: add 
+```
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+```
+near the top of the `CMakeLists.txt` to allow the library paths to be set reasonably.
